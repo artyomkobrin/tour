@@ -1,8 +1,14 @@
-package com.example.lyavon.mytour;
+package com.example.lyavon.mytour.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.lyavon.mytour.R;
+import com.example.lyavon.mytour.data.RequestDataQuery;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -10,9 +16,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,View.OnClickListener {
 
     private GoogleMap mMap;
+
+   private Button btnAdd;
+   private TextView textTest;
+
 
 
     @Override
@@ -24,8 +34,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        textTest = (TextView) findViewById(R.id.text_test);
+        btnAdd = (Button) findViewById(R.id.butAdd);
+        btnAdd.setOnClickListener(this);
 
     }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(MapsActivity.this,DataActivity.class);
+        startActivityForResult(intent,1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        String name ="";
+        RequestDataQuery requestDataQuery = (RequestDataQuery)getIntent().getParcelableExtra("хуй");
+
+        name = requestDataQuery.getOriginName();
+
+        textTest.setText(name);
+    }
+
 
 
     /**

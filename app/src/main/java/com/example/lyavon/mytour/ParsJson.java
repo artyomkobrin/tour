@@ -1,5 +1,6 @@
 package com.example.lyavon.mytour;
 
+import com.example.lyavon.mytour.data.ResponceDataQuery;
 import com.example.lyavon.mytour.model.DirectionModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,23 +17,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Lyavon on 05.01.2018.
  */
 
-public class ParsJson  {
+public class ParsJson {
 
-    DataQuery dataQuery = new DataQuery();
+    ResponceDataQuery responceDataQuery = new ResponceDataQuery();
 
     ArrayList<Float> a1 = new ArrayList<>();
     ArrayList<Float> a2 = new ArrayList<>();
+    private final String key = "AIzaSyD9nXl3KmDyAsG2YnqdjIvJNrvroDPRCMU";
 
     public void ParsJson() {
 
 
-
-
         String origin = "Брест";
         String destination = "Берёза";
-        String waypoints = "Кобрин|Жабинка";
+        String waypoints = "Кобрин|Пинск";
         String mode = "driving";
-        String key = "AIzaSyCfsjKcCw2wtTLz2LiozwO9R6ZuW9KL4qk";
+
         final String[] ss = {""};
 
         Retrofit retrofit;
@@ -48,7 +48,7 @@ public class ParsJson  {
 
         face = retrofit.create(Face.class); //Создаем объект, при помощи которого будем выполнять запросы
 
-        face.getData(origin,destination,waypoints).enqueue(new Callback<DirectionModel>() {
+        face.getData(origin, destination,mode, waypoints,key).enqueue(new Callback<DirectionModel>() {
             @Override
             public void onResponse(Call<DirectionModel> call, Response<DirectionModel> response) {
                 for (int rou = 0; rou < response.body().getRoutes().size(); rou++) {
@@ -64,8 +64,8 @@ public class ParsJson  {
                     }
                 }
 
-                dataQuery.setStartLocLat(a1);
-                dataQuery.setStartLocLng(a2);
+                responceDataQuery.setStartLocLat(a1);
+                responceDataQuery.setStartLocLng(a2);
 
             }
 

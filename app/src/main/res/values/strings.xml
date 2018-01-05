@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">My Tour</string>
     <string name="title_activity_maps">Map</string>
+    <string name="text_whence">Whence</string>
+    <string name="text_where">Where</string>
+    <string name="text_waypoints">Waypoints</string>
 </resources>

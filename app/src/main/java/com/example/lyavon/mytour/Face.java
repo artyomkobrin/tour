@@ -17,5 +17,8 @@ public interface Face {
     @GET("maps/api/directions/json")
     Call<DirectionModel> getData(@Query("origin") String originName,
                                  @Query("destination") String destinationName,
-                                    @Query("waypoints")    String waypoints);
+                                 @Query("mode") String modeName,
+                                 @Query("waypoints")    String waypointsVal,
+                                 @Query("key") String key);
+
 }

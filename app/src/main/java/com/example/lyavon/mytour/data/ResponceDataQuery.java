@@ -1,4 +1,4 @@
-package com.example.lyavon.mytour;
+package com.example.lyavon.mytour.data;
 
 import java.util.ArrayList;
 
@@ -6,12 +6,12 @@ import java.util.ArrayList;
  * Created by Lyavon on 04.01.2018.
  */
 
-public class DataQuery {
+public class ResponceDataQuery {
 
-   private ArrayList<Float> startLocLat;
-    private   ArrayList<Float> startLocLng;
-    private  ArrayList<Float> endLocLat;
-    private  ArrayList<Float> endLocLng;
+    private ArrayList<Float> startLocLat;
+    private ArrayList<Float> startLocLng;
+    private ArrayList<Float> endLocLat;
+    private ArrayList<Float> endLocLng;
 
     public ArrayList<Float> getStartLocLat() {
         return startLocLat;
